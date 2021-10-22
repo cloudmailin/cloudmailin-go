@@ -1,0 +1,56 @@
+{
+  "headers": {
+    "received": ["by mail-qv1-f65.google.com with SMTP id p7so20148692qvl.4        for <postman@cloudmailin.net>; Wed, 08 Jul 2020 02:45:03 -0700", "by localhost"],
+    "date": "Wed, 08 Jul 2020 10:44:51 +0100",
+    "from": "Steve Smith <test@example.com>",
+    "to": "postman@cloudmailin.net",
+    "message_id": "<CALazKR8Zr8Lsv+SUAeuaL-vrhWSCK36TRU8=7HjsenxwaP9ZbA@mail.gmail.com>",
+    "subject": "Test Email",
+    "mime_version": "1.0",
+    "content_type": "multipart/mixed; boundary=0000000000003f5df405a9eaf6b3",
+    "dkim_signature": "v=1; a=rsa-sha256; c=relaxed/relaxed;        d=cloudmailin.com; s=google;        h=mime-version:from:date:message-id:subject:to;        bh=2zJ0T9mjmB+KEbTRSwWM6gib13pfWH06sqoKCpekggQ=;        b=B9bkMpwYpdtqKl88huNjeAlG3HOTz3fYn7YCiP2EEsF8Jg9s4wl6AJc6UFpFz3+0Z1         +ELEYLlBjbeRNSqJfXTxez8XYF2ZmKtVMlLxQI1LXfMmcIif1TPyCyChpKLAa4cDDkPa         ANpqLvV4mtioUFa4RmhUDyU/SgnknQ2bKMWlI=",
+    "x_google_dkim_signature": "v=1; a=rsa-sha256; c=relaxed/relaxed;        d=1e100.net; s=20161025;        h=x-gm-message-state:mime-version:from:date:message-id:subject:to;        bh=2zJ0T9mjmB+KEbTRSwWM6gib13pfWH06sqoKCpekggQ=;        b=UvmHN3id85YKA0oYht4hyJ0LizFZqHDDIHh6DlgYz/IoHhuW4yNcvAFIVx5MBwyAHy         dDMZmCyszTkmL5XertpIARMwBtxdDflRFi6r+nA/5z+NdERyw5EEWoydG3o/rd8HMJ9X         OtJ5m6HvG1yIrenUznPO950votFeD8aR7niNY1lWaof6zAlLk0iyG3Op0Cvpswc1x80M         tLDl/7YifUWPoVWeRfafV4nZgPqgZKG3dBCPOyumzXh2PhRaGIUV2EtgZDEk+Aj/XLbZ         XVBgGXB4tThrH1F9tJiWY8jwqK9ic/MYrlKTPt09bHXkWZe+ezCBw1cU3Ux6PICXUWjF         6ODQ==",
+    "x_gm_message_state": "AOAM5330S16AteaaevVXyweOWntrmI2dEDFTXJ/4U3RSko0V8zbxxS7A\tyjPxcdn+yvIhifZ8/UlcO5nJjzTFyWZaiRfOkAduuzFlyrk=",
+    "x_google_smtp_source": "ABdhPJyE8ytN/HKjAUHmpw0zPa1+s5qAc/7UPn+0IeK9tEFwCmMJsPrNNo+JLQ7rSPUynCv8wDKM2JAm4t1EQZZ1PX8=",
+    "x_received": "by 2002:a0c:e78b:: with SMTP id x11mr51567032qvn.103.1594201502325; Wed, 08 Jul 2020 02:45:02 -0700 (PDT)"
+  },
+  "envelope": {
+    "to": "postman@cloudmailin.net",
+    "recipients": [
+      "postman@cloudmailin.net"
+    ],
+    "from": "from+test@cloudmailin.net",
+    "helo_domain": "cloudmailin.net",
+    "remote_ip": "172.20.0.18",
+    "tls": true,
+    "tls_cipher": "TLSv1.3",
+    "spf": {
+      "result": "fail",
+      "domain": "cloudmailin.net"
+    },
+    "store_url": "http://example.s3.amazonaws.com/store/2020_10_22_09_55_18_ce5f9a939358ba89b80acd97f737e0db.eml"
+  },
+  "plain": "Test Content\n\n\u003e On 08 Jul 2020 at 10:00, example@cloudmailin.net wrote:\n\u003e \n\u003e Example message\n\u003e Option: 2\n\u003e \n\n",
+  "html": "<div dir=\"ltr\">Test Content<div><br></div></div>\n",
+  "reply_plain": "Test Content\n",
+
+  "attachments": [
+    {
+      "file_name": "pixel.png",
+      "content": "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP0rdr1HwAFHwKCk87e6gAAAABJRU5ErkJggg==",
+      "content_type": "image/png",
+      "size": "37135",
+      "disposition": "attachment",
+      "content_id": "<f_kcd6ejvs1>",
+      "scan": {
+        "status": "ok",
+        "filename": "pixel.png",
+        "content_length": 7,
+        "md5": "9a0364b9e99bb480dd25e1f0284c8555",
+        "sha256": "ed7002b439e9ac845f22357d822bac1444730fbdb6016d3ec9432297b9ec9f73",
+        "id": "b1a187b7-bd22-406a-8c1a-f532a0ce5ba6",
+        "matches": ["Example Match"]
+      }
+    }
+  ]
+}
