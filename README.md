@@ -69,27 +69,53 @@ for a more detailed example:
 package main
 
 import (
-  "log"
-  "net/smtp"
+	"fmt"
+
+	"github.com/cloudmailin/cloudmailin-go"
 )
 
 func main() {
-  // hostname is used by PlainAuth to validate the TLS certificate.
-  hostname := "host from account"
-  auth := smtp.PlainAuth("", "username from account", "password fromo account", hostname)
+	// Create the default CloudMailin Client. This example will
+	// panic if there are any failures at all.
+	client, err := cloudmailin.NewClient()
+	if err != nil {
+			panic(err)
+	}
 
-  msg := `To: to@example.net
-From: from@example.com
-Subject: Testing from GoLang
+// SMTP Settings will be taken from CLOUDMAILIN_SMTP_URL env variable by
+// default but they can be overridden.
+// client.SMTPAccountID = ""
+// client.SMTPToken = ""
 
-This is the message content!
-Thanks
-`
-  err := smtp.SendMail(hostname+":587", auth, "from@example.com", []string{"to@example.net"},
-    []byte(msg))
-  if err != nil {
-    log.Fatal(err)
-  }
+	// Create an instance of cloudmailin.OutboundMailAttachment
+	attachment, err := cloudmailin.AttachmentFromFile("./logo.png")
+	if err != nil {
+		panic(err)
+	}
+
+// Generate an example email
+message := cloudmailin.OutboundMail{
+		From:     "sender@example.com",
+		To:       []string{"debug@example.net"},
+		CC:       []string{"carbon@example.net"},
+		Headers:  map[string][]string{"x-agent": {"cloudmailin-go"}},
+		Subject:  "Hello From Go",
+		Plain:    "Hello World",
+		HTML:     "<h1>Hello!</h1>\nWorld",
+		Priority: "",
+		Tags:     []string{"go"},
+		Attachments: []cloudmailin.OutboundMailAttachment{attachment},
+}
+
+// This will re-write the message struct based on the
+// JSON returned from the call if successful.
+_, err = client.SendMail(&message)
+if err != nil {
+		panic(err)
+}
+
+// The message.ID should now be populated
+fmt.Printf("ID: %t, Tags: %s", message.ID != "", message.Tags)
 }
 ```
 

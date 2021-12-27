@@ -16,3 +16,6 @@
 
 # Ignore dot folders unless explicitly included
 .*/
+
+# Ignore DS_Store
+.DS_Store
