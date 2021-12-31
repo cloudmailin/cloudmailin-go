@@ -26,6 +26,7 @@ func buildMessage() OutboundMail {
 				ContentID:   "<pix12>",
 			},
 		},
+		TestMode: true,
 	}
 }
 

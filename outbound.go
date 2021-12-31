@@ -22,6 +22,7 @@ type OutboundMail struct {
 	Priority    string                   `json:"priorty,omitempty"`
 	Tags        []string                 `json:"tags,omitempty"`
 	Attachments []OutboundMailAttachment `json:"attachments,omitempty"`
+	TestMode    bool                     `json:"test_mode,omitempty"`
 
 	ID string `json:"id,omitempty"`
 }

@@ -105,6 +105,7 @@ message := cloudmailin.OutboundMail{
 		Priority: "",
 		Tags:     []string{"go"},
 		Attachments: []cloudmailin.OutboundMailAttachment{attachment},
+		TestMode: true,
 }
 
 // This will re-write the message struct based on the
