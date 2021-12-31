@@ -64,7 +64,7 @@ func (client Client) SendMail(message *OutboundMail) (res *http.Response, err er
 // AttachmentFromFile is a convenience function to prepare an OutboundMailAttachment
 // from a local file (given as the filepath argument).
 // The content will be Base64 encoded automatically and the filename included.
-// In future this might be extended to help with content types.
+// This uses http.DetectContentType to guess the content type of the file.
 func AttachmentFromFile(filepath string) (att OutboundMailAttachment,
 	err error) {
 
@@ -73,14 +73,14 @@ func AttachmentFromFile(filepath string) (att OutboundMailAttachment,
 		return
 	}
 
-	// encoded := make([]byte)
+	contentType := http.DetectContentType(bytes)
 	encoded := base64.StdEncoding.EncodeToString(bytes)
 	filename := path.Base(filepath)
 
 	att = OutboundMailAttachment{
 		Content:     encoded,
 		ContentID:   "",
-		ContentType: "",
+		ContentType: contentType,
 		FileName:    filename,
 	}
 
