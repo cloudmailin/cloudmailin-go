@@ -27,30 +27,13 @@ type Client struct {
 	AccountToken string
 }
 
-// NewClient returns an instance of the DefaultClient. DefaultClient assumes
-// that the ENV variable CLOUDMAILIN_SMTP_URL is set containing the SMTP
-// credentials and sets the BaseURL to CLOUDMAILIN_API_BASE_URL if present.
-//
-// If these are not set create a client instance manually and set the required
-// credentials.
-func NewClient() (client Client, err error) {
-	client, err = defaultclient()
-	if err != nil {
-		return
-	}
-
-	if client.SMTPAccountID == "" || client.SMTPToken == "" {
-		err = fmt.Errorf("missing client values: %v", client)
-	}
-
-	return
-}
-
-func defaultclient() (client Client, err error) {
+// NewClientFromURL returns an instance of the Client using the provided SMTP URL.
+// The BaseURL will be set from CLOUDMAILIN_API_BASE_URL environment variable or
+// fall back to the default if not set.
+func NewClientFromURL(smtpURL string) (client Client, err error) {
 	var smtpToken string
 	var smtpAccount string
 
-	smtpURL := os.Getenv("CLOUDMAILIN_SMTP_URL")
 	if smtpURL != "" {
 		u, err := url.Parse(smtpURL)
 		if err != nil {
@@ -74,7 +57,23 @@ func defaultclient() (client Client, err error) {
 		AccountToken:  "",
 	}
 
+	if client.SMTPAccountID == "" || client.SMTPToken == "" {
+		err = fmt.Errorf("missing client values: %v", client)
+	}
+
 	return
+}
+
+// NewClient returns an instance of the DefaultClient. DefaultClient assumes
+// that the ENV variable CLOUDMAILIN_SMTP_URL is set containing the SMTP
+// credentials and sets the BaseURL to CLOUDMAILIN_API_BASE_URL if present
+// or the default if not set.
+//
+// If the CLOUDMAILIN_SMTP_URL is not set either use NewClientFromURL or
+// create a client instance manually and set the required credentials.
+func NewClient() (client Client, err error) {
+	smtpURL := os.Getenv("CLOUDMAILIN_SMTP_URL")
+	return NewClientFromURL(smtpURL)
 }
 
 // RequestType is used to differentiate between account and SMTP requests.
