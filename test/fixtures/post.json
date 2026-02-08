@@ -28,7 +28,13 @@
       "result": "fail",
       "domain": "cloudmailin.net"
     },
-    "store_url": "http://example.s3.amazonaws.com/store/2020_10_22_09_55_18_ce5f9a939358ba89b80acd97f737e0db.eml"
+    "store_url": "http://example.s3.amazonaws.com/store/2020_10_22_09_55_18_ce5f9a939358ba89b80acd97f737e0db.eml",
+    "spamd": {
+      "score": "2.5",
+      "symbols": ["BAYES_50", "HTML_MESSAGE"],
+      "success": true,
+      "description": "SpamAssassin score"
+    }
   },
   "plain": "Test Content\n\n\u003e On 08 Jul 2020 at 10:00, example@cloudmailin.net wrote:\n\u003e \n\u003e Example message\n\u003e Option: 2\n\u003e \n\n",
   "html": "<div dir=\"ltr\">Test Content<div><br></div></div>\n",

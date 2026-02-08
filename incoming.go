@@ -56,7 +56,7 @@ type IncomingMailEnvelopeSPF struct {
 // IncomingMailEnvelopeSPAMD contains the result of the SpamAssassin scan of the
 // email (if enabled).
 type IncomingMailEnvelopeSPAMD struct {
-	Score       uint     `json:"score,string"`
+	Score       float32  `json:"score,string"`
 	Symbols     []string `json:"symbols"`
 	Success     bool     `json:"success"`
 	Description string   `json:"description"`

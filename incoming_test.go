@@ -56,7 +56,12 @@ func TestParseIncomingReader(t *testing.T) {
 			TLSCipher:  "TLSv1.3",
 			StoreURL:   "http://example.s3.amazonaws.com/store/2020_10_22_09_55_18_ce5f9a939358ba89b80acd97f737e0db.eml",
 			SPF:        IncomingMailEnvelopeSPF{"fail", "cloudmailin.net"},
-			SPAMD:      IncomingMailEnvelopeSPAMD{},
+			SPAMD: IncomingMailEnvelopeSPAMD{
+				Score:       2.5,
+				Symbols:     []string{"BAYES_50", "HTML_MESSAGE"},
+				Success:     true,
+				Description: "SpamAssassin score",
+			},
 		}},
 		// Headers tested in the other specs
 		{"Plain", message.Plain, "Test Content\n\n\u003e On 08 Jul 2020 at 10:00, " +
