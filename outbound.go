@@ -19,6 +19,7 @@ type OutboundMail struct {
 	Subject     string                   `json:"subject,omitempty"`
 	Plain       string                   `json:"plain,omitempty"`
 	HTML        string                   `json:"html,omitempty"`
+	Markdown    string                   `json:"markdown,omitempty"`
 	Priority    string                   `json:"priority,omitempty"`
 	Tags        []string                 `json:"tags,omitempty"`
 	Attachments []OutboundMailAttachment `json:"attachments,omitempty"`
